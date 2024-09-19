@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+body {
+  background-color: #021526;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer{
+  text-align: center;
+  color: #fff;
+  font-size: 80px;
+  margin: 0;
+}
+
+.header{
+  word-spacing: 11px;
+  text-align: center;
+  color: #FBA834;
+  font-size: 80px;
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 5px;
+}
+
+.stopwatch-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.stopwatch-buttons svg {
+  margin: 20px;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 55%;
+}
+
+.anticon svg {
+  display: inline-block;
+  background-color: #F5EFFF;
+}
+
+.stopwatch-buttons button:first-child {
+  background-color: green;
+}
+
+.stopwatch-buttons .Stop {
+  background-color: red;
+}
+.stopwatch-buttons .Reset{
+  background-color: #F97300;
+}
+
+.ant-btn-primary, .ant-btn-primary:hover{
+  background-color: #021526 !important;
+}
+
+.ant-select.ant-select-outlined{
+  width: 150px !important;
+}
+
+.saveModel .ant-modal-body{
+  display: grid;
+}
+
+.saveBtn, .saveBtn:hover{
+  background-color: #021526 !important;
+  border-color: #021526 !important;
+  margin-top: 20px;
+  color: white !important;
+}
+
+/*  Form Design */
+.myLoginForm{
+    max-width: 360px;
+      background: #84A7A1;
+      padding: 30px;
+      border-radius: 10px;
+      height: auto;
+      text-align: center;
+}
+
+.loginHeader{
+      text-align: center;
+      color: #021526;
+      font-size: 20px;
+      font-weight:600;
+      font-style: normal;
+}
+
+.iconContainer{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+svg[data-icon = "safety-certificate"]{
+  display: inline-block;
+  background-color: #021526;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+svg[data-icon="safety-certificate"] path{
+  color: #F5EFFF;
+}
+
+.ant-otp .ant-input{
+  border: #021526;
+}
+
+.ant-modal-footer{
+  display: none;
+}
