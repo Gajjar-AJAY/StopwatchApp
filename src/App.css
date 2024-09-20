@@ -6,6 +6,15 @@ body {
   justify-content: center;
 }
 
+.stopwatch-container{
+  text-align: center;
+}
+
+@media only screen and (max-width: 420px) {
+  .header {
+    font-size: 60px !important;
+  }
+}
 .timer{
   text-align: center;
   color: #fff;
@@ -72,6 +81,14 @@ body {
   color: white !important;
 }
 
+.totalTime{
+  font-size: 18px;
+}
+
+.totalBreakLabel{
+  font-size: 18px;
+  font-weight: 600;
+}
 /*  Form Design */
 .myLoginForm{
     max-width: 360px;

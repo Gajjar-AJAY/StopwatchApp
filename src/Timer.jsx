@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Select, Space, Modal, message, Table, Empty, Button } from "antd";
 import axios from "axios";
 import {
@@ -23,6 +23,12 @@ function Timer() {
     breakType: "",
     breakTotalTime: null,
   });
+
+  // use Memo
+  const totalBreakTime = useMemo(
+    () => calculateTotalBreakTime(showData),
+    [showData]
+  );
 
   // References
   const interverRef = useRef(null);
@@ -151,10 +157,14 @@ function Timer() {
           })
           .then(() => {
             setIsStoreTime(false);
-            messageApi.open({
-              type: "success",
-              content: "Break Time Added !",
-            });
+            messageApi
+              .open({
+                type: "success",
+                content: "Break Time Added !",
+              })
+              .then(() => {
+                window.location.reload();
+              });
           });
       } catch (err) {
         console.log("Err... For Storing Break Time Data !!");
@@ -185,6 +195,25 @@ function Timer() {
     setTotalTime(tempTimeStore);
     console.log(`selected ${value}`);
   };
+
+  function calculateTotalBreakTime(data) {
+    let totalSeconds = 0;
+    data.forEach((item) => {
+      const [hours, minutes, seconds] = item.breakTime.split(":").map(Number);
+      totalSeconds += hours * 3600 + minutes * 60 + seconds;
+    });
+
+    // Convert total seconds back to hh:mm:ss format
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+      2,
+      "0"
+    )}:${String(seconds).padStart(2, "0")}`;
+  }
+
   return (
     <div className="stopwatch-container">
       {contextHolder}
@@ -263,7 +292,13 @@ function Timer() {
           width={1000}
         >
           {showData.length != 0 ? (
-            <Table columns={columns} dataSource={showData} />
+            <>
+              <Table columns={columns} dataSource={showData} />
+              <div>
+                <span className="totalBreakLabel">Total Break Time : </span>{" "}
+                <b className="totalTime">{totalBreakTime}</b>
+              </div>
+            </>
           ) : (
             <Empty />
           )}

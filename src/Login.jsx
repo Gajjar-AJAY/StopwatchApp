@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SafetyCertificateOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input, message } from "antd";
+import { Button, Form, Input, message } from "antd";
 import axios from "axios";
 // import { Link } from "react-router-dom";
 
@@ -21,9 +21,10 @@ function Login() {
         setAllData(res.data);
       })
       .catch((err) => {
-        console.log("Error... while getting the user code");
+        console.log("Error... while getting the user code", err);
       });
   }, []);
+
   // onChange OTP
   const onEnterOTP = (text) => {
     setOTPCode(text);
@@ -70,7 +71,7 @@ function Login() {
         <label className="loginHeader">Enter Code</label>
 
         <Form.Item name="password" style={{ marginTop: "20px" }}>
-          <Input.OTP length={4} onChange={onEnterOTP} />
+          <Input.OTP length={4} onChange={onEnterOTP} type="tel" />
         </Form.Item>
 
         <Form.Item>
