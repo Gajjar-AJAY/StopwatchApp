@@ -71,7 +71,7 @@ function Login() {
         <label className="loginHeader">Enter Code</label>
 
         <Form.Item name="password" style={{ marginTop: "20px" }}>
-          <Input.OTP length={4} onChange={onEnterOTP} type="tel" />
+          <Input.OTP length={4} onChange={onEnterOTP} type="number" />
         </Form.Item>
 
         <Form.Item>
